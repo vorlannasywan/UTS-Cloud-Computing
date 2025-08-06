@@ -1,0 +1,36 @@
+name: Deploy Frontend ke AWS EC2
+
+on:
+  push:
+    branches:
+      - frontend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v3
+
+      - name: Siapkan Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Instal dependensi
+        run: npm install
+
+      - name: Deploy ke EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: 3.106.221.195
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /home/ubuntu/frontend
+            git pull origin frontend
+            npm install
+            pm2 restart frontapp || pm2 start index.js --name frontend
+            sudo systemctl restart nginx
