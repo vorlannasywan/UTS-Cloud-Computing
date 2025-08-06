@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><% if (typeof title !== 'undefined') { %><%= title %><% } else { %>Aplikasi Kesehatan<% } %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <a href="/">Tampil Barang</a>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <a href="/edit">Edit Barang</a>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/login">Login</a>
+      <% } %>
+    </div>
+    <div class="content">
+      <%- body %>
+    </div>
+  </div>
+</body>
+</html>

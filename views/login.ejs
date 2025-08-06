@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <div class="sidebar">
-    <a href="/">Tampil Barang</a>
-    <a href="/edit">Edit Barang</a>
-    <a href="/login">Login</a>
-  </div>
-  <div class="content">
-    <h1>Login</h1>
-    <% if (error) { %>
-      <p style="color: red;"><%= error %></p>
-    <% } %>
-    <form action="/login" method="POST">
-      <label>Username:</label>
-      <input type="text" name="username" required>
-      <label>Password:</label>
-      <input type="password" name="password" required>
-      <button type="submit">Login</button>
-    </form>
-  </div>
-</body>
-</html>
+<%- include('layout', { title: 'Login' }) %>
+<%- body %>
+<h1>Login</h1>
+<% if (error) { %>
+  <p style="color: red;"><%= error %></p>
+<% } %>
+<form action="/login" method="POST">
+  <label>Username:</label>
+  <input type="text" name="username" required>
+  <label>Password:</label>
+  <input type="password" name="password" required>
+  <button type="submit">Login</button>
+</form>
