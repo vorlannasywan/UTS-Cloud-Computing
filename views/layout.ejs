@@ -2,7 +2,37 @@
 <html>
 <head>
   <title><% if (typeof title !== 'undefined') { %><%= title %><% } else { %>Aplikasi Kesehatan<% } %></title>
-  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 200px;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 10px;
+      margin-bottom: 5px;
+      text-decoration: none;
+      color: #333;
+      border-radius: 4px;
+    }
+    .sidebar a:hover {
+      background-color: #ddd;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
